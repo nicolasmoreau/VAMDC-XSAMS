@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2011 (http://www.altova.com) by B. Kergudu (Kergudu) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" attributeFormDefault="unqualified">
 	<xs:annotation>
 		<xs:documentation>Contains general data types and attributes used in several subschemas</xs:documentation>
@@ -247,12 +246,12 @@
 	</xs:complexType>
 	<xs:complexType name="FitValidityLimitsType">
 		<xs:sequence>
-			<xs:element name="LowerLimit" type="xs:double" minOccurs="0">
+			<xs:element name="LowerLimit" type="ValueType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Lower limit of fit validity</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="UpperLimit" type="xs:double" minOccurs="0">
+			<xs:element name="UpperLimit" type="ValueType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Upper limit of fit validity</xs:documentation>
 				</xs:annotation>
