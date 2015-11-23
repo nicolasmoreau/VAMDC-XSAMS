@@ -2,7 +2,8 @@ XSAMS Schema design policies
 
 Edit this note if you have something to add.
 
-Please use meaningful commit messages, describing the whole set of changes made.
+**Please use meaningful commit messages, describing the whole set of changes made.**
+
 "git diff" before commit would help in writing such messages.
 
 ID and IDREF tags and references
