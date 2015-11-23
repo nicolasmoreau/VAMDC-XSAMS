@@ -7,20 +7,19 @@ Please use meaningful commit messages, describing the whole set of changes made.
 
 ID and IDREF tags and references
 ------------------------------------
-	
-	* Define ID types in typesAttributes.xsd,
-	
-	* Always define the ID prefix letter (or several letters, if we run out of them) to avoid collisions between different IDs in instance documents
-	
-	* Always document the ID and what would be the use of it.
-	
-	    - In the documentation of an ID type, name the elements/types that are referencing it.
-	
-	* Never define attributes/elements of type IDREF without specifyng what ID elements they should refer to!
-	  Not everyone is as smart as you, so to deny him making stupid things, don't do this.
-	  
-	* Define IDREF types in typesAttributes.xsd, next to the ID definition.
-	
+
+  * Define ID types in typesAttributes.xsd,
+
+  * Always define the ID prefix letter (or several letters, if we run out of them) to avoid collisions between different IDs in instance documents
+ 
+  * Always document the ID and what would be the use of it.
+    - In the documentation of an ID type, name the elements/types that are referencing it.
+  
+  * Never define attributes/elements of type IDREF without specifyng what ID elements they should refer to!
+    Not everyone is as smart as you, so to deny him making stupid things, don't do this.
+  
+  * Define IDREF types in typesAttributes.xsd, next to the ID definition.
+
 General tips
 ---------------
 	
