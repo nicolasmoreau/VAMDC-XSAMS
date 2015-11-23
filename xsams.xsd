@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	xmlns="http://vamdc.org/xml/xsams/1.0"
+	xmlns:xsams="http://vamdc.org/xml/xsams/1.0"
+	targetNamespace="http://vamdc.org/xml/xsams/1.0">
 	<xs:include schemaLocation="./methods.xsd"/>
 	<xs:include schemaLocation="./sources.xsd"/>
 	<xs:include schemaLocation="./functions.xsd"/>
+	<xs:include schemaLocation="./environments.xsd"/>
 	<xs:include schemaLocation="./typesAttributes.xsd"/>
 	<xs:include schemaLocation="./statesAtoms.xsd"/>
 	<xs:include schemaLocation="./statesMolecules.xsd"/>
@@ -11,9 +16,11 @@
 	<xs:include schemaLocation="./radiative.xsd"/>
 	<xs:include schemaLocation="./nonradiative.xsd"/>
 	<xs:include schemaLocation="./collisions.xsd"/>
-	<!-- Nov 2006; Modified by YR:	some types removed; 'Type" appended to type names 
-Mar 2007: system of reference added
--->
+	
+	<!--Import all case namespaces-->
+	<xs:include schemaLocation="./cases/import.xsd"/>
+	
+	
 	<xs:element name="XSAMSData" type="XSAMSDataType">
 		<xs:annotation>
 			<xs:documentation>XML schema for description of atomic, molecular, and particle-solid-interaction processes</xs:documentation>
@@ -21,7 +28,12 @@ Mar 2007: system of reference added
 	</xs:element>
 	<xs:complexType name="XSAMSDataType">
 		<xs:all>
-			<xs:element name="States" type="StatesType">
+			<xs:element name="Environments" type="EnvironmentsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>List of environments relevant to the data</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Species" type="SpeciesType">
 				<xs:annotation>
 					<xs:documentation>List of atomic states, molecular states, particles, surfaces, and solids</xs:documentation>
 				</xs:annotation>
@@ -56,7 +68,7 @@ Mar 2007: system of reference added
 			</xs:element>
 		</xs:all>
 	</xs:complexType>
-	<xs:complexType name="StatesType">
+	<xs:complexType name="SpeciesType">
 		<xs:all>
 			<xs:element name="Atoms" type="AtomsType" minOccurs="0">
 				<xs:annotation>
