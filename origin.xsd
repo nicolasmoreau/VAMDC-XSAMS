@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    xmlns="http://vamdc.org/xml/xsams/1.0"
+    xmlns:xsams="http://vamdc.org/xml/xsams/1.0"
+    xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0"
+    targetNamespace="http://vamdc.org/xml/xsams/1.0">
+    
+    <xs:import namespace="http://www.ivoa.net/xml/VOResource/v1.0" schemaLocation="http://www.ivoa.net/xml/VOResource/v1.0"/>
+    <xs:include schemaLocation="./typesAttributes.xsd"/>
+    
+    <xs:annotation>
+        <xs:documentation>Contains data types and attributes used in versioning and data provenance</xs:documentation>
+    </xs:annotation>
+    <!--=== general attributes and types ===-->
+    
+    <xs:complexType name="OriginType">
+        <xs:sequence>
+            <xs:element name="originIdentifier" type="vr:IdentifierURI" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Ivoaid of the resource that produced the linked data. 
+                        If data was produced by a standalone application or a script that do not have an ivoaid, use an empty value.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="query" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Query used to get the data from the specified origin.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="timestamp" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The timestamp of the data extraction from the specified origin.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="version" type="VersionType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The version of the extracted data with the current query from the specified origin.
+                        
+                        If a given element is contained into a version element, it can not belong to another one.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="origin" type="OriginType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation> History of data production workflow.
+                        If there is at least one contained origin element, no version should be declared as global.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="type" type="originType"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="originType">
+        <xs:annotation>
+            <xs:documentation>Type of resource that produced the linked data</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="node"/>
+            <xs:enumeration value="processor"/>
+            <xs:enumeration value="other"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="VersionType">
+        <xs:annotation>
+            <xs:documentation>if a given element is referenced into a specific version, it cannot belong to another one.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="SpeciesRef" type="SpeciesRefType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>List of species ids into the current version</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StateRef" type="StateRefType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>List of states ids into the current version</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProcessRef" type="ProcessRefType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>List of states ids into the current version</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="versionID" type="VersionIDType">
+            <xs:annotation>
+                <xs:documentation>The id of the current version. </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="global" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation> 
+                    if the global version is present in the incoming document.
+                    global=true only for documents with a unique version element</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="timestamp" type="xs:dateTime">
+            <xs:annotation>
+                <xs:documentation>The timestamp of the current version creation on the node side</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    
+</xs:schema>

@@ -734,6 +734,26 @@
 		</xs:restriction>
 	</xs:simpleType>
 	
+	<xs:simpleType name="VersionIDType">
+		<xs:annotation>
+			<xs:documentation>ID for a specific version record. Can be used to refer to 
+				a specific XML version block in external programs/schemas.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:ID">
+			<xs:pattern value="VER.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="OriginIDType">
+		<xs:annotation>
+			<xs:documentation>ID for a specific origin record. Can be used to refer to 
+				a specific XML origin block in external programs/schemas.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:ID">
+			<xs:pattern value="ORI.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
 	<!-- References types definition. All IDREF's should be here.-->
 	<xs:simpleType name="MethodRefType">
 		<xs:annotation>
@@ -762,6 +782,16 @@
 		</xs:annotation>
 		<xs:restriction base="xs:IDREF">
 			<xs:pattern value="X.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ProcessRefType">
+		<xs:annotation>
+			<xs:documentation>ID for a specific process record. Can be used to refer to 
+				a specific XML process block in external programs/schemas.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:IDREF">
+			<xs:pattern value="P.+"/>
 		</xs:restriction>
 	</xs:simpleType>
 
