@@ -71,17 +71,17 @@
         <xs:sequence>
             <xs:element name="SpeciesRef" type="SpeciesRefType" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
-                    <xs:documentation>List of species ids into the current version</xs:documentation>
+                    <xs:documentation>List of species refs ids into the current version</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="StateRef" type="StateRefType" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
-                    <xs:documentation>List of states ids into the current version</xs:documentation>
+                    <xs:documentation>List of state refs ids into the current version</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="ProcessRef" type="ProcessRefType" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
-                    <xs:documentation>List of states ids into the current version</xs:documentation>
+                    <xs:documentation>List of process refs ids into the current version</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
