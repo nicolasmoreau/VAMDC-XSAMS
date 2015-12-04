@@ -37,8 +37,7 @@
             </xs:element>
             <xs:element name="version" type="VersionType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation>The version of the extracted data with the current query from the specified origin.
-                        
+                    <xs:documentation>The version of the extracted data with the current query from the specified origin.                        
                         If a given element is contained into a version element, it can not belong to another one.
                     </xs:documentation>
                 </xs:annotation>
