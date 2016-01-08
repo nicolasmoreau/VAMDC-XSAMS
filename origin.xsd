@@ -109,6 +109,11 @@
                     <xs:documentation>List of process refs ids into the current version</xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element name="SourceRef" type="SourceRefType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>List of source refs ids into the current version</xs:documentation>
+                </xs:annotation>
+            </xs:element>
         </xs:sequence>
         <xs:attribute name="versionID" type="VersionIDType">
             <xs:annotation>

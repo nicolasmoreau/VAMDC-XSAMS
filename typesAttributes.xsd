@@ -16,19 +16,16 @@
 					<xs:documentation>Arbitrary comments</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="SourceRef" minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="SourceRef" type="SourceRefType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>One or more source references - these entries should match the sourceID attributes of the Sources</xs:documentation>
 				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:IDREF">
-						<xs:pattern value="B.+"/>
-					</xs:restriction>
-				</xs:simpleType>
 			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="methodRef" type="MethodRefType"/>
 	</xs:complexType>
+
+
 	
 	<xs:complexType name="ChemicalElementType">
 		<xs:annotation>
@@ -792,6 +789,16 @@
 		</xs:annotation>
 		<xs:restriction base="xs:IDREF">
 			<xs:pattern value="P.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="SourceRefType">
+		<xs:annotation>
+			<xs:documentation>ID for a specific source record. Can be used to refer to 
+				a specific XML source block in external programs/schemas.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:IDREF">
+			<xs:pattern value="B.+"/>
 		</xs:restriction>
 	</xs:simpleType>
 
